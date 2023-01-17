@@ -4,7 +4,13 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="a7e0acb1-f8d0-4a1f-8b2e-55525315b0d0" name="Changes" comment="" />
+    <list default="true" id="a7e0acb1-f8d0-4a1f-8b2e-55525315b0d0" name="Changes" comment="">
+      <change afterPath="$PROJECT_DIR$/src/main/java/org/example/DSA/SinglyLinkedList.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/example/Agile/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/Agile/README.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/example/Databases/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/Databases/README.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/example/Typescript/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/Typescript/README.md" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
