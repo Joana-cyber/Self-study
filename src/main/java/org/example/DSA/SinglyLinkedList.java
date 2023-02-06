@@ -69,6 +69,22 @@ public class SinglyLinkedList<E> {
         size ++;
     }
 
+    public void addNth(int position, E item){
+        Node<E> node = new Node<>(item);
+        Node<E> current = head;
+        if(head != null && position <= size){
+            for (int i = 1; i < position-1; i++) {
+                current = current.getNext();
+            }
+            node.setNext(current.getNext());
+            current.setNext(node);
+            size++;
+        }
+        else{
+            System.out.println("Exceeded the linked list size. Current Size: "+size);
+        }
+    }
+
     public E removeFirst(){
         if(isEmpty()) return null;
 
@@ -97,6 +113,29 @@ public class SinglyLinkedList<E> {
             prevNode.next = null;
             tail = prevNode;
             return current.getElement();
+        }
+    }
+
+    public E removeNth(int position){
+        if(position > size && position <= 1) return null;
+        int currentPosition = 1;
+        Node<E> currentNode = head;
+        Node<E> prevNode = null;
+        while(currentPosition < position){
+            prevNode = currentNode;
+            currentNode = currentNode.getNext();
+            currentPosition++;
+        }
+        size--;
+        prevNode.next = currentNode.getNext();
+        return currentNode.getElement();
+    }
+
+    public void printAll(){
+        Node<E> current = head;
+        while(current != null){
+            System.out.println(current.getElement());
+            current = current.getNext();
         }
     }
 }
