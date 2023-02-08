@@ -5,10 +5,10 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="a7e0acb1-f8d0-4a1f-8b2e-55525315b0d0" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/src/main/java/org/example/DSA/CircularlyLinkedList.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/example/DSA/CircularlyLinkedList.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/DSA/CircularlyLinkedList.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/org/example/DSA/Data-Structures-and-Algorithms-in-Java-6th-Edition.pdf" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/DSA/Data-Structures-and-Algorithms-in-Java-6th-Edition.pdf" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/example/DSA/SinglyLinkedList.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/DSA/SinglyLinkedList.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/example/DSA/DoublyLinkedList.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/DSA/DoublyLinkedList.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/org/example/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/Main.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />

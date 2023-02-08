@@ -1,142 +1,134 @@
 package org.example.DSA;
 
-public class DoublyLinkedList<T> {
-    Node<T> head;
+public class DoublyLinkedList<E> {
+    private static class Node<E>{
+        private E element;
+        private Node<E> prev;
+        private Node<E> next;
 
-    Node<T> tail;
+        public Node(E element, Node<E> prev, Node<E> next) {
+            this.element = element;
+            this.prev = prev;
+            this.next = next;
+        }
 
-    private class Node<T>{
-        T data;
-        Node<T> next;
+        public E getElement() {
+            return element;
+        }
 
-        Node<T> previous;
+        public void setElement(E element) {
+            this.element = element;
+        }
 
-        public Node(T data){
-          this.data = data;
+        public Node<E> getPrev() {
+            return prev;
+        }
+
+        public void setPrev(Node<E> prev) {
+            this.prev = prev;
+        }
+
+        public Node<E> getNext() {
+            return next;
+        }
+
+        public void setNext(Node<E> next) {
+            this.next = next;
         }
     }
 
-    public T get(int index){
-        if(head == null){
-            throw new IndexOutOfBoundsException();
-        }
+    private Node<E> header;
+    private Node<E> trailer;
 
-        int count = 0;
-        Node<T> current = head;
-        while(current != null && count != index){
-            current = current.next;
-            count ++;
-        }
+    private int size = 0;
 
-        return current.data;
+    public DoublyLinkedList(){
+       header = new Node<>(null, null, null);
+       trailer = new Node<>(null, header, null);
+       header.setNext(trailer);
     }
 
-    public void insert(T item){
-        if(head == null) {
-            head = new Node(item);
-            tail = head;
-        }
+    public boolean isEmpty(){
+        return size == 0;
+    }
+
+    public int size(){
+        return size;
+    }
+
+    private E first(){
+        if(size == 0) return null;
+        return header.getNext().getElement();
+    }
+
+    private E last(){
+        if(size == 0) return null;
+        return trailer.getPrev().getElement();
+    }
+
+    public void addFirst(E item){
+        Node<E> node = new Node<>(item, header, header.getNext());
+        header.getNext().setPrev(node);
+        header.setNext(node);
+        size++;
+    }
+
+    public void addLast(E item){
+        Node<E> node = new Node<>(item, trailer.getPrev(), trailer);
+        trailer.getPrev().setNext(node);
+        trailer.setPrev(node);
+        size++;
+    }
+
+    public void addNth(int position, E item){
+        if(position > size) System.out.println("Position exceeds length, size is " + size);
         else{
-            Node<T> current = head;
-            while(current.next != null){
-                current = current.next;
+            Node<E> node = new Node<>(item, null, null);
+            Node<E> current = header.getNext();
+            for(int i = 1; i < position; i++){
+                current = current.getNext();
             }
-            Node<T> newData = new Node(item);
-            current.next = newData;
-            newData.previous = current;
-            tail = newData;
+            node.setPrev(current.getPrev());
+            node.setNext(current);
+            current.getPrev().setNext(node);
+            current.setPrev(node);
+            size++;
         }
     }
 
-    public void insert(int index, T item){
-        if(index == 0) {
-            head = new Node(item);
-            tail = head;
-        }
-        else{
-            int count = 0;
-            Node<T> current = head;
-            while(count != index && current.next != null){
-                current = current.next;
-                count ++;
-            }
-            Node<T> newData = new Node(item);
-
-            if(current.next == null){
-                current.next = newData;
-                newData.previous = current;
-                tail = newData;
-            }
-            else{
-                Node<T> temp = current.previous;
-                current.previous.next = newData;
-                current.previous = newData;
-                newData.previous = temp;
-                newData.next = current;
-            }
-
-        }
+    public void removeFirst(){
+        Node<E> newHead = header.getNext().getNext();
+        newHead.setPrev(header);
+        header.setNext(newHead);
+        size--;
     }
 
-    public boolean remove(T item){
-        if(head == null){
-            throw new IndexOutOfBoundsException();
-        }
-
-        Node<T> current = head;
-        while(current.next != null && current != item){
-            current = current.next;
-        }
-        if(current == null || current.next == null) return false;
-
-        current.next = current.next.next;
-        current.next.previous = current;
-        return true;
+    public void removeLast(){
+        Node<E> newTail = trailer.getPrev().getPrev();
+        newTail.setNext(trailer);
+        trailer.setPrev(newTail);
+        size--;
     }
 
-//    public boolean remove(int index){
-//        if(head == null){
-//            throw new IndexOutOfBoundsException();
-//        }
-//
-//        Node<T> current = head;
-//        int count = 0;
-//        while(current.next != null && count != index){
-//            current = current.next;
-//            count ++;
-//        }
-//        if(current == null) return false;
-//
-//        current.next.previous = current.previous;
-//        current.previous.next = current.next;
-//
-//        return true;
-//    }
-
-    public boolean set(T item, T newItem){
-        if(head == null){
-            throw new IndexOutOfBoundsException();
+    public E removeNth(int position){
+        if(position > size) return null;
+        Node<E> current = header.getNext();
+        for(int i = 1; i < position; i++){
+            current = current.getNext();
         }
-
-        Node<T> current = head;
-        while(current.next != null && current != item){
-            current = current.next;
-        }
-
-        current.data = newItem;
-        return true;
+        current.getNext().setPrev(current.getPrev());
+        current.getPrev().setNext(current.getNext());
+        size--;
+        return current.getElement();
     }
 
     public void printAll(){
-        if(head == null){
-            throw new IndexOutOfBoundsException();
-        }
-        else{
-            Node<T> current = head;
-            while(current != null){
-                System.out.println(current.data);
-                current = current.next;
-            }
+        Node<E> current = header.getNext();
+        while(current != trailer){
+            System.out.println(current.getElement());
+            current = current.getNext();
         }
     }
+
+
 }

@@ -61,36 +61,55 @@ public class Main {
 //        System.out.println(singlyLinkedList.last());
 
 
-        CircularlyLinkedList<Integer> cl = new CircularlyLinkedList<>();
-        System.out.println(cl.isEmpty());
-        cl.addFirst(1);
-        System.out.println( cl.first());
-        System.out.println(cl.last());
-        System.out.println();
+//        CircularlyLinkedList<Integer> cl = new CircularlyLinkedList<>();
+//        System.out.println(cl.isEmpty());
+//        cl.addFirst(1);
+//        System.out.println( cl.first());
+//        System.out.println(cl.last());
+//        System.out.println();
+//
+//        cl.addLast(2);
+//        cl.addLast(3);
+//        cl.addLast(4);
+//        cl.addLast(5);
+//        System.out.println("size = "+ cl.size());
+//        System.out.println();
+//        cl.printAll();
+//
+//        System.out.println();
+//        cl.addFirst(0);
+//        cl.addLast(6);
+//        cl.printAll();
+//
+//        System.out.println();
+//        cl.removeFirst();
+//        cl.printAll();
+//
+//        System.out.println();
+//        cl.removeLast();
+//        cl.printAll();
+//
+//        System.out.println();
+//        cl.rotate();
+//        cl.printAll();
 
-        cl.addLast(2);
-        cl.addLast(3);
-        cl.addLast(4);
-        cl.addLast(5);
-        System.out.println("size = "+ cl.size());
-        System.out.println();
-        cl.printAll();
+        DoublyLinkedList<Integer> dl = new DoublyLinkedList<>();
+        System.out.println(dl.isEmpty());
+        dl.addFirst(1);
+        dl.addLast(5);
+        dl.addNth(2, 2);
+        dl.addNth(3,3);
+        dl.addNth(4, 4);
+        dl.addLast(6);
+        dl.addFirst(0);
+        System.out.println(dl.size());
+        dl.printAll();
 
         System.out.println();
-        cl.addFirst(0);
-        cl.addLast(6);
-        cl.printAll();
-
+        dl.removeFirst();
+        dl.removeLast();
+        System.out.println("Removed integer: " + dl.removeNth(3));
         System.out.println();
-        cl.removeFirst();
-        cl.printAll();
-
-        System.out.println();
-        cl.removeLast();
-        cl.printAll();
-
-        System.out.println();
-        cl.rotate();
-        cl.printAll();
+        dl.printAll();
     }
 }
