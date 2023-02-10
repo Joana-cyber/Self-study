@@ -138,4 +138,20 @@ public class SinglyLinkedList<E> {
             current = current.getNext();
         }
     }
+
+    @Override
+    public boolean equals(Object o) {
+        if(o == null) return false;
+        if(getClass() != o.getClass()) return false;
+        SinglyLinkedList other = (SinglyLinkedList) o;
+        if(size != other.size()) return false;
+        Node thisCurrent = head;
+        Node otherCurrent = other.head;
+        while(thisCurrent != null){
+            if(!thisCurrent.getElement().equals(otherCurrent)) return false;
+            thisCurrent = thisCurrent.getNext();
+            otherCurrent = otherCurrent.getNext();
+        }
+        return true;
+    }
 }
